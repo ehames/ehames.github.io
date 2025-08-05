@@ -15,4 +15,4 @@ I'm a dad, husband and computer scientist working on software development. In 20
 
 ## Contact
 
-- [email](mailto:ehames@gmail.com)
+- [email](mailto:ehames@gmail.com) 
