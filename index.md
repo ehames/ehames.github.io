@@ -9,9 +9,10 @@ I'm a dad, husband and computer scientist working on software development. In 20
 
 ## Links
 
-- [Talks](https://www.slideshare.net/EdgardoHames/presentations)
-- [Resume](https://www.linkedin.com/in/ehames/)
-- [Github](https://github.com/ehames)
+🎤 [Talks](https://www.slideshare.net/EdgardoHames/presentations)  
+💼 [Resume](https://www.linkedin.com/in/ehames/)  
+🐙 [Github](https://github.com/ehames)  
+🐦 [Twitter](https://twitter.com/edgardohames)
 
 ## Contact
 
