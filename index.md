@@ -17,3 +17,11 @@ I'm a dad, husband and computer scientist working on software development. In 20
 ## Contact
 
 - [email](mailto:ehames@gmail.com) 
+
+# Projects
+## Falluto
+An extension to [NuSMV](https://nusmv.fbk.eu/index.html) to model fault tolerant systems.
+
+* [Falluto Source Code](https://github.com/ehames/falluto)
+* [Falluto Docs](content/Falluto.pdf)
+* [Falluto Slides](content/Falluto_slides.pdf)
