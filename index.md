@@ -18,8 +18,12 @@ I'm a dad, husband and computer scientist working on software development. In 20
 
 - [email](mailto:ehames@gmail.com) 
 
-# Projects
-## Falluto
+## Blog
+### Homelab
+* [Homelab Part 1: 2012 Mac mini, Fedora CoreOS and a Modern Home DNS Stack](blog/homelab-part1-os-networking)
+
+## Projects
+### Falluto
 An extension to [NuSMV](https://nusmv.fbk.eu/index.html) to model fault tolerant systems.
 
 * [Falluto Source Code](https://github.com/ehames/falluto)
