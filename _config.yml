@@ -2,11 +2,9 @@
 title: Edgardo Hames
 email: ehames@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Computer scientist and software developer. Co-founder of Bitlogic.
+  Computer scientist and software developer. Co-founder of [Bitlogic](https://bitlogic.io){:target="_blank" rel="noopener noreferrer"}.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ehames.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: edgardohames
-github_username:  ehames
 
 # Build settings
 markdown: kramdown

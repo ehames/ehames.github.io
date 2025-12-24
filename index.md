@@ -2,22 +2,6 @@
 layout: default
 title: Edgardo Hames
 ---
-
-# Edgardo Hames
-
-I'm a dad, husband and computer scientist working on software development. In 2016, I cofounded [Bitlogic](https://bitlogic.io).
-
-## Links
-
-🎤 [Talks](https://www.slideshare.net/EdgardoHames/presentations)  
-💼 [Resume](https://www.linkedin.com/in/ehames/)  
-🐙 [Github](https://github.com/ehames)  
-🐦 [Twitter](https://twitter.com/edgardohames)
-
-## Contact
-
-- [email](mailto:ehames@gmail.com) 
-
 ## Blog
 ### Homelab
 * [Homelab Part 1: 2012 Mac mini, Fedora CoreOS and a Modern Home DNS Stack]({% post_url 2025-12-24-homelab-part1-os-networking %})
