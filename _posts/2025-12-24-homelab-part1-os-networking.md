@@ -1,4 +1,9 @@
-# Asteria: Breathing New Life Into a 2012 Mac mini With Fedora CoreOS and a Modern Home DNS Stack
+---
+layout: default
+title: "Homelab Part 1: 2012 Mac mini, Fedora CoreOS and a Modern Home DNS Stack"
+date: 2025-12-24
+---
+# Homelab Part 1: 2012 Mac mini, Fedora CoreOS and a Modern Home DNS Stack
 
 > OS, networking, and DNS/ad‑blocking on a repurposed 2012 Mac mini.
 
