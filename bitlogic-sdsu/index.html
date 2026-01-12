@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitlogic photos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --accent: #ff6b35;
+            --accent-dark: #e85a2b;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gallery Container */
+        .gallery {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        /* Photo Card */
+        .photo-card {
+            position: relative;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.4s ease;
+            animation: fadeInScale 0.6s ease-out backwards;
+        }
+
+        .photo-card:nth-child(1) { animation-delay: 0.1s; }
+        .photo-card:nth-child(2) { animation-delay: 0.2s; }
+        .photo-card:nth-child(3) { animation-delay: 0.3s; }
+        .photo-card:nth-child(4) { animation-delay: 0.4s; }
+        .photo-card:nth-child(5) { animation-delay: 0.5s; }
+        .photo-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            padding-top: 75%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+
+        .photo-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s ease;
+            filter: grayscale(0%) brightness(0.95);
+        }
+
+        .photo-card:hover .photo-container img {
+            transform: scale(1.08);
+            filter: grayscale(0%) brightness(1);
+        }
+
+        .caption {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .caption h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .caption p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            margin-bottom: 1rem;
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            header {
+                padding: 3rem 1rem 1.5rem;
+            }
+
+            .caption {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Loading placeholder for images */
+        .photo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0.05) 100%
+            );
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .photo-container img:not([src=""]) ~ ::before {
+            display: none;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-close::before,
+        .lightbox-close::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: white;
+        }
+
+        .lightbox-close::before {
+            transform: rotate(45deg);
+        }
+
+        .lightbox-close::after {
+            transform: rotate(-45deg);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .lightbox-caption h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lightbox-caption p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Hacer las imágenes clickeables */
+        .photo-container {
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: 20px;
+                right: 20px;
+            }
+
+            .lightbox-caption {
+                bottom: 20px;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-close" id="closeBtn"></div>
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+    <header>
+        <h1>Bitlogic memories</h1>
+        <p class="subtitle">Some photos to bring Bitlogic to life</p>
+    </header>
+
+    <main class="gallery">
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/founders.jpg" 
+                     alt="The founders" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>The founders</h3>
+                <p>From left to right: Federico Aguirre (CTO), Alfredo Edye (CEO), and Edgardo Hames (CGO).</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/board.jpg" 
+                     alt="The board" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>The board</h3>
+                <p>From left to right: Verónica Larralde (CPO), Alfredo Edye (CEO), Marcela Casinghino (COO), Rosario Molina (CFO), Edgardo Hames (CGO), and Federico Aguirre (CTO), .</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/teameoy.jpg" 
+                     alt="The team at our year-end celebration"
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>The team</h3>
+                <p>We got together to enjoy a day outdoors and celebrate a great 2025.</p>
+            </div>
+        </article>
+
+
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/working-1.jpg" 
+                     alt="The team working on the basement" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>People at work</h3>
+                <p>We work remotely or from the office.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/working-2.jpg" 
+                     alt="The team during a training session" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Internal training sessions</h3>
+                <p>We run internal training sessions to keep raising the bar on team skills.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/hr.jpg" 
+                     alt="The HR team in an meeting room" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Team meeting</h3>
+                <p>Our HR team in a weekly meeting.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/allhands.jpg" 
+                     alt="The team listening to our CEO during an all-hands meeting" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>All-hands meeting</h3>
+                <p>We hold all-hands meetings every quarter to share company updates, news, and perspectives.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/kitchen-lunch.jpg" 
+                     alt="The team having lunch in our kitchen" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Lunch in the kitchen</h3>
+                <p>The team having lunch in the kitchen, a great moment to catch up.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/outdoor-lunch.jpg" 
+                     alt="The team having lunch outdoors" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Lunch outdoors</h3>
+                <p>Sometimes the weather is so nice that we eat in the back patio.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/team-backyard.jpg" 
+                     alt="The team in the backyard" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>The team in the backyard</h3>
+                <p>Sometimes we just want a  team photo.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/Bithouse-1.JPG" 
+                     alt="Bithouse, our headquarters, function both as a coworking space and art gallery." 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Bithouse, our headquarters</h3>
+                <p>Bithouse, our headquarters, serves as both a coworking space and an art gallery.</p>
+            </article>
+            
+        </div>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/Bithouse-2.JPG" 
+                     alt="Bithouse and Superanfibio" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Bithouse and Superanfibio</h3>
+                <p>Bithouse, on the right; Superanfibio, our favorite coffee shop, on the left. Bithouse was built in 1941 and is a designated city landmark.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/backyard.jpg" 
+                     alt="The view from the backyard" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>The view from the backyard.</h3>
+                <p>Our backyard is a great place to unwind. With the city’s main stadium and the mountains in the background, it’s the perfect spot to relax after work.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/goingon-1.jpg" 
+                     alt="A rock band playing in our basement" 
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Bithouse sessions</h3>
+                <p>We host small music events at our office.</p>
+            </div>
+        </article>
+
+        <article class="photo-card">
+            <div class="photo-container">
+                <img src="photos/goingon-3.jpg" 
+                     alt="DJ playing on our back porch"
+                     loading="lazy">
+            </div>
+            <div class="caption">
+                <div class="accent-line"></div>
+                <h3>Back porch DJ</h3>
+                <p>Work and music. There's always something happening.</p>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Picture Gallery. Made with <3.</p>
+    </footer>
+
+    <script>
+        // Elementos del lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDescription = document.getElementById('lightbox-description');
+        const closeBtn = document.getElementById('closeBtn');
+        const photoCards = document.querySelectorAll('.photo-card');
+
+        // Agregar evento click a cada tarjeta
+        photoCards.forEach(card => {
+            const photoContainer = card.querySelector('.photo-container');
+            const img = card.querySelector('img');
+            const title = card.querySelector('h3').textContent;
+            const description = card.querySelector('.caption p').textContent;
+
+            photoContainer.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxTitle.textContent = title;
+                lightboxDescription.textContent = description;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Cerrar lightbox al hacer clic en el botón de cerrar
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeLightbox();
+        });
+
+        // Cerrar lightbox al hacer clic en el fondo
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Cerrar lightbox con la tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        // Función para cerrar el lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
